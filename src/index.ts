@@ -1,5 +1,6 @@
 import express, { Express, Request, Response } from "express";
 import dotenv from "dotenv";
+import contactInfo from "./routes/contact-info";
 
 dotenv.config();
 
@@ -11,7 +12,7 @@ app.get("/", (req: Request, res: Response) => {
 });
 
 app.get("/contact-info", (req: Request, res: Response) => {
-  res.json({ phone: "07466998681", email: "alemran@gmail.com", address: 1 });
+  res.json(contactInfo());
 });
 
 app.get("/address", (req: Request, res: Response) => {

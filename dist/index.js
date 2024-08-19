@@ -5,6 +5,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
 const dotenv_1 = __importDefault(require("dotenv"));
+const contact_info_1 = __importDefault(require("./routes/contact-info"));
 dotenv_1.default.config();
 const app = (0, express_1.default)();
 const port = process.env.PORT || 3000;
@@ -12,7 +13,7 @@ app.get("/", (req, res) => {
     res.send("Express + TypeScript Server");
 });
 app.get("/contact-info", (req, res) => {
-    res.json({ phone: "07466998681", email: "alemran@gmail.com", address: 1 });
+    res.json((0, contact_info_1.default)());
 });
 app.get("/address", (req, res) => {
     res.json({ currentAddress: "birmingham", permanentAddress: "Bangladesh" });
