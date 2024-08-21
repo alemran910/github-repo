@@ -1,7 +1,7 @@
 import express, { Express, Request, Response } from "express";
 import dotenv from "dotenv";
 import { contactInfo } from "./routes/contact-info";
-import { personalInfo } from "./routes/info";
+import { personalInfo } from "./routes/personal-info";
 import { addressInfo } from "./routes/address";
 import {
   familyInfo,
@@ -9,7 +9,7 @@ import {
   motherInfo,
   sister1Info,
   sister2Info,
-} from "./routes/familyInfo";
+} from "./routes/family-info";
 
 dotenv.config();
 
