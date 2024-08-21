@@ -1,6 +1,15 @@
 import express, { Express, Request, Response } from "express";
 import dotenv from "dotenv";
-import contactInfo from "./routes/contact-info";
+import { contactInfo } from "./routes/contact-info";
+import { personalInfo } from "./routes/info";
+import { addressInfo } from "./routes/address";
+import {
+  familyInfo,
+  fatherInfo,
+  motherInfo,
+  sister1Info,
+  sister2Info,
+} from "./routes/familyInfo";
 
 dotenv.config();
 
@@ -15,49 +24,32 @@ app.get("/contact-info", (req: Request, res: Response) => {
   res.json(contactInfo());
 });
 
+app.get("/personal-info", (req: Request, res: Response) => {
+  res.json(personalInfo());
+});
+
 app.get("/address", (req: Request, res: Response) => {
-  res.json({ currentAddress: "birmingham", permanentAddress: "Bangladesh" });
+  res.json(addressInfo());
 });
 
 app.get("/family-info", (req: Request, res: Response) => {
-  res.json({
-    fatherName: "amir",
-    motherName: "shahin",
-    sisterName1: "afsana",
-    sisterName2: "mitu",
-  });
+  res.json(familyInfo());
 });
 
 app.get("/family-info/father", (req: Request, res: Response) => {
-  res.json({
-    fatherName: "amir",
-    placeOfBirth: "bangladesh",
-    language: ["bangla", "italian", "english", "urdu"],
-  });
+  res.json(fatherInfo());
 });
 
 app.get("/family-info/mother", (req: Request, res: Response) => {
-  res.json({
-    motherName: "shahin",
-    placeOfBirth: "bangladesh",
-    language: ["bangla", "english"],
-  });
+  res.json(motherInfo());
 });
 
-app.get("/family-info/sister", (req: Request, res: Response) => {
-  res.json({
-    sisterName1: "afsana",
-    placeOfBirth: "italy",
-    language: ["bangla", "english", "urdu"],
-  });
+app.get("/family-info/sister1", (req: Request, res: Response) => {
+  res.json(sister1Info());
 });
 
 app.get("/family-info/sister2", (req: Request, res: Response) => {
-  res.json({
-    sisterName2: "mitu",
-    placeOfBirth: "bangladesh",
-    language: ["bangla", "italian", "english", "urdu"],
-  });
+  res.json(sister2Info());
 });
 
 app.listen(port, () => {
